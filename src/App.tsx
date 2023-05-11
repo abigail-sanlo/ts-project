@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import List from './components/List';
-
+import Form from './components/Form';
 interface Sub{
   nick:string,
   subMonths: number,
@@ -26,7 +26,7 @@ const INITIAL_STATE=[{
   avatar: 'https://i.pravatar.cc/150?u=sergio',
 }]
 function App() {
-  const [subs,setSubs]=useState<Array<Sub>>([])
+  const [subs,setSubs]=useState<AppState['subs']>([])
   const [newSubsNumber, setNewSubsNumber] = useState<AppState["newSubsNumber"]>(0)
 
   useEffect(() =>{
@@ -34,8 +34,9 @@ function App() {
   },[])
   return (
     <div className="App">
-      <h1>Users</h1>
-      <List subs={subs}/>
+      <h1>Midu subs</h1>
+      <List subs={subs} />
+      <Form/>
     </div>
   );
 }
